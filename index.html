@@ -15,50 +15,32 @@
   <body>
     <header>
       <h1>Odin Library</h1>
+
+      <!-- show modal  -->
+      <dialog id="addBook_dialog">
+        <div class="dialog-book">
+          <form>
+            <h2>Add New Book</h2>
+            <input type="text" id="title_book" placeholder="Title" />
+            <input type="text" id="author_book" placeholder="Author" />
+            <input type="number" id="pages_book" min="1" placeholder="Pages" />
+            <br />
+            <label for="read_status">Have you read this book? </label>
+            <input type="checkbox" name="read_status" value="Not read" />
+          </form>
+        </div>
+      </dialog>
       <div class="add-button-container">
-        <button class="addBtn">+</button>
+        <button class="addBtn" id="showDialog">+</button>
         <p class="add-book">Add Book</p>
       </div>
     </header>
 
     <main>
       <div class="card-container">
-        <div class="card-book">
-          <!-- <h2 class="title"></h2>
-          <p class="author">by Donna Tartt</p>
-          <p class="pages">576 pages</p>
-          <div class="card-btn">
-            <button class="read-status btn">Read</button>
-            <button class="remove-btn btn">Remove</button> -->
-          </div>
-
-          <div class="card-book">
-            <!-- <h2 class="title"></h2>
-            <p class="author">by Paulo Coelho</p>
-            <p class="pages">180 pages</p>
-            <div class="card-btn">
-              <button class="read-status btn">Read</button>
-              <button class="remove-btn btn">Remove</button> -->
-            </div>
-
-
-            <div class="card-book">
-              <!-- <h2 class="title"></h2>
-              <p class="author">by Jostein Gaarder</p>
-              <p class="pages">544 pages</p>
-              <div class="card-btn">
-                <button class="read-status btn">Read</button>
-                <button class="remove-btn btn">Remove</button>
-              </div> -->
-            </div>
-
-
-          </div>
-
-
-        </div>
-
-
+        <div class="card-book"></div>
+        <div class="card-book"></div>
+        <div class="card-book"></div>
       </div>
     </main>
     <script src="script.js"></script>

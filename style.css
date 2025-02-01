@@ -118,10 +118,17 @@ main {
   gap: 4em;
 }
 
+dialog {
+  width: 17em;
+  padding: 1em;
+  margin: auto;
+  text-align: center;
+}
+
 .card-book {
-  background-color: #f7f7f7;
   padding: 2em;
   text-align: center;
+  background-color: #f7f7f7;
   border: 3px solid #000000;
   border-radius: 0.5em;
 }
@@ -161,4 +168,48 @@ main {
 
 .remove-btn:hover {
   background-color: #ca5e5e;
+}
+
+/* modal form */
+input {
+  margin: 0.7em 0;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.5);
+  margin-left: 10px;
+}
+
+label[for="read_status"] {
+  margin-bottom: 10px;
+}
+
+/*   Open state of the dialog  */
+dialog[open] {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+dialog {
+  opacity: 0;
+  transform: scaleY(0);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out,
+    overlay 0.7s ease-out allow-discrete, display 0.7s ease-out allow-discrete;
+}
+
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+
+dialog::backdrop {
+  background-color: rgb(0 0 0 / 0%);
+  transition: display 0.7s allow-discrete, overlay 0.7s allow-discrete,
+    background-color 0.7s;
+}
+
+dialog[open]::backdrop {
+  background-color: rgb(0 0 0 / 25%);
 }

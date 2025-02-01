@@ -1,5 +1,6 @@
 const bookCard = document.getElementsByClassName("card-book");
-console.log(bookCard);
+const addBook_dialog = document.getElementById("addBook_dialog");
+const showBtn = document.getElementById("showDialog");
 
 const myLibrary = [];
 
@@ -44,3 +45,7 @@ function displayBook() {
 }
 
 displayBook();
+
+showBtn.addEventListener("click", () => {
+  addBook_dialog.showModal();
+});
