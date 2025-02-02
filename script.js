@@ -1,6 +1,10 @@
-const bookCard = document.getElementsByClassName("card-book");
+// const bookCard = document.getElementsByClassName("card-book");
 const addBook_dialog = document.getElementById("addBook_dialog");
 const showBtn = document.getElementById("showDialog");
+const submitBtn = document.getElementById("closeModal");
+const removeBtn = document.getElementsByClassName("remove-btn");
+
+// input elements
 
 const myLibrary = [];
 
@@ -33,19 +37,45 @@ book3.addBookToLibrary();
 
 // Write a function that loops through the array and displays each book on the page
 function displayBook() {
-  return myLibrary.forEach((item, index) => {
-    bookCard[index].innerHTML = `
-    <h2 class="title">${item.title}</h2>
-    <p class="author">By ${item.author}</p>
-    <p class="pages">${item.pages} pages</p>
+  const cardContainer = document.getElementsByClassName("card-container")[0];
+  cardContainer.innerHTML = "";
+  for (let i = 0; i < myLibrary.length; i++) {
+    const cardBook = document.createElement("div");
+    cardBook.classList.add("card-book");
+    cardBook.innerHTML = `
+    <h2 class="title">${myLibrary[i].title}</h2>
+    <p class="author">By ${myLibrary[i].author}</p>
+    <p class="pages">${myLibrary[i].pages} pages</p>
     <div class="card-btn">
     <button class="read-status btn">Read</button>
-    <button class="remove-btn btn">Remove</button>`;
-  });
+    <button class="remove-btn btn">Remove</button>
+    </div>`;
+    cardContainer.appendChild(cardBook);
+  }
 }
 
 displayBook();
 
 showBtn.addEventListener("click", () => {
   addBook_dialog.showModal();
+});
+
+// add books
+addBook_dialog.addEventListener("close", (e) => {
+  const titleBook = document.getElementById("title_book");
+  const author_book = document.getElementById("author_book");
+  const pages_book = document.getElementById("pages_book");
+
+  const titleValue = titleBook.value;
+  const authorValue = author_book.value;
+  const pagesBookValue = Number(pages_book.value);
+
+  let newBook = new Book(titleValue, authorValue, pagesBookValue);
+  newBook.addBookToLibrary();
+  displayBook();
+});
+
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  addBook_dialog.close();
 });
