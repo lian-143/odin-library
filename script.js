@@ -5,19 +5,20 @@ const submitBtn = document.getElementById("closeModal");
 const myLibrary = [];
 
 // constructor
-function Book(title, author, pages, readStatus) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.readStatus = readStatus;
-}
+class Book {
+  constructor(title, author, pages, readStatus) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.readStatus = readStatus;
+  }
 
-// create a book from those arguments, and store the new book object into an array
-Book.prototype.addBookToLibrary = function () {
-  // add the new book in myLibrary array
-  myLibrary.push(this);
-  return myLibrary;
-};
+  // create a book from those arguments, and store the new book object into an array
+  addBookToLibrary() {
+    myLibrary.push(this);
+    return myLibrary;
+  }
+}
 
 let book1 = new Book("The Secret History", "Donna Tartt", 503, true);
 let book2 = new Book(
